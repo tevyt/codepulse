@@ -1,0 +1,21 @@
+version: '3'
+
+tasks:
+  build-client:
+    dir: 'codepulse-client'
+    cmds:
+      - npm install
+      - npm run build -- --emptyOutDir
+  build-server:
+    dir: 'codepulse-server'
+    cmds:
+      - go build .
+  server-dev:
+    dir: 'codepulse-server'
+    cmds:
+      - task build-client
+      - task build-server
+      - go run .
+  
+     
+     
